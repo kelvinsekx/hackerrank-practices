@@ -9,11 +9,13 @@ https://www.hackerrank.com/challenges/one-week-preparation-kit-time-conversion/p
 
 ```javascript
 function timeConversion(s) {
+    const getHour = timeInString => parseInt(timeInString.slice(0, 2))
   if(s.slice(-2) === 'AM'){
-    return `0${parseInt(s.slice(0, 2)) - 12}` + s.slice(2, 8)
+    return `0${getHour(s) == 12 ? 
+    '0' : getHour(s)}` + s.slice(2, 8)
   }else{
-     return `${(parseInt(s.slice(0, 2)) !== 12) ? 
-     parseInt(s.slice(0, 2)) + 12 : 12 }` + s.slice(2, 8) 
+     return `${getHour(s) !== 12 ? 
+     getHour(s) + 12 : 12 }` + s.slice(2, 8) 
   }
 }
 ```
